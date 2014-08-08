@@ -13,6 +13,12 @@ describe Animal do
     expect(Animal.all).to eq [animal]
   end
 
+  it 'treats an animal object of the same species as the same species' do
+    animal = Animal.new({'species' => 'lion'})
+    another_animal = animal = Animal.new({'species' => 'tiger'})
+    expect(animal).to eq another_animal
+  end  
+
   describe '.all' do
     it 'creates animal objects from all animal entries in db' do
       animal = Animal.new({'species' => 'lion'})
@@ -21,5 +27,5 @@ describe Animal do
       another_animal.save
       expect(Animal.all).to eq [animal, another_animal]
     end  
-  end  
+  end
 end

@@ -16,6 +16,10 @@ class Animal
     animals = []
     results = DB.exec("SELECT * FROM animals;")
     results.each { |result| animals << Animal.new(result) }
-    animals  
+    animals
   end
+
+  def ==(another_animal)
+    self.species == another_animal.species
+  end  
 end
