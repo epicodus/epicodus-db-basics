@@ -7,6 +7,11 @@ describe Animal do
     expect(animal).to be_an_instance_of Animal
   end
 
+  it 'allows manager to access animal species' do
+    animal = Animal.new({'species' => 'lion'})
+    expect(animal.species).to eq 'lion'
+  end
+
   it 'saves the new animal object to the db' do
     animal = Animal.new({'species' => 'lion'})
     animal.save
