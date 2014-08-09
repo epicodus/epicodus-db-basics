@@ -24,7 +24,7 @@ describe Kind do
     expect(kind).to eq another_kind
   end
 
-  it 'adds a kind to an animal' do
+  it 'adds a animal to a kind' do
     kind = Kind.new({'name' => 'lion'})
     kind.save
     animal = Animal.new({'name' => 'Leo'})

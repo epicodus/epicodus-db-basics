@@ -16,4 +16,8 @@ class Trainer < Database
   def ==(another_self)
     self.name == another_self.name
   end
+
+  # def add_animal(animal)
+  #   results = DB.exec("INSERT INTO lessons (trainer_id, animal_id, kind_id) VALUES (#{self.id}, #{animal.id});")
+  # end
 end

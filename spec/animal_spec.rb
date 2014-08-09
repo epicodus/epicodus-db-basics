@@ -7,7 +7,7 @@ describe Animal do
     expect(animal).to be_an_instance_of Animal
   end
 
-  it 'allows manager to access animal name' do
+  it 'provides access animal name' do
     animal = Animal.new({'name' => 'Leo'})
     expect(animal.name).to eq 'Leo'
   end
@@ -32,6 +32,17 @@ describe Animal do
     animal.add_kind(kind)
     results = DB.exec("SELECT * FROM animals WHERE id = #{animal.id}")
     expect(results.first['kind_id']).to eq kind.id
+  end 
+
+  it 'provides access to kind_id after kind added to animal' do
+    animal = Animal.new({'name' => 'Leo'})
+    animal.save
+    kind = Kind.new({'name' => 'lion'})
+    kind.save
+    animal.add_kind(kind)
+    results = DB.exec("SELECT * FROM animals WHERE id = #{animal.id}")
+    results.each do |result| puts result end
+    expect(results.first['kind_id']).to eq animal.kind_id
   end 
 
   describe '.all' do
