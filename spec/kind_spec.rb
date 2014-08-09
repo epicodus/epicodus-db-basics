@@ -56,13 +56,13 @@ describe Kind do
     end  
   end
 
-   describe '.destroy' do
+   describe '.put_down' do
     it 'deletes an kind from the db' do
       kind = Kind.new({'name' => 'lion'})
       another_kind = Kind.new({'name' => 'tiger'})
       kind.save
       another_kind.save
-      Kind.destroy(kind)
+      Kind.put_down(kind)
       expect(Kind.all).to eq [another_kind]
     end
   end  

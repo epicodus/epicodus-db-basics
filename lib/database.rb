@@ -7,7 +7,7 @@ class Database
     all
   end
 
-  def self.destroy(object)
+  def self.put_down(object)
     DB.exec("DELETE FROM #{@table} WHERE id = '#{object.id}'")
   end
 end

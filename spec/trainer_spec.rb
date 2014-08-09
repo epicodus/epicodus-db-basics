@@ -64,14 +64,16 @@ describe Trainer do
     end  
   end
 
-  it 'deletes an tamer from the db' do
-    tamer = Trainer.new({'name' => 'Bobby'})
-    another_tamer = Trainer.new({'name' => "little Bobby"})
-    tamer.save
-    another_tamer.save
-    Trainer.destroy(tamer)
-    expect(Trainer.all).to eq [another_tamer]
-  end
+  describe '.put_down' do
+    it 'deletes an tamer from the db' do
+      tamer = Trainer.new({'name' => 'Bobby'})
+      another_tamer = Trainer.new({'name' => "little Bobby"})
+      tamer.save
+      another_tamer.save
+      Trainer.put_down(tamer)
+      expect(Trainer.all).to eq [another_tamer]
+    end
+  end  
 
   describe 'list_kinds' do
     it 'returns all kinds of animals trained by trainer' do
