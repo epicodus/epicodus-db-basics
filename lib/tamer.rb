@@ -13,4 +13,8 @@ class Tamer < Database
     @id = result.first['id']
   end
 
+  def ==(another_tamer)
+    self.name == another_tamer.name
+  end  
+
 end

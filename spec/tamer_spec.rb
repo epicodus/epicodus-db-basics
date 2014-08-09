@@ -13,9 +13,15 @@ describe Tamer do
   end
 
 
-  it 'saves the new animal object to the db' do
+  it 'saves the new tamer object to the db' do
     tamer = Tamer.new({'name' => 'Billy'})
     tamer.save
     expect(Tamer.all).to eq [tamer]
   end
+
+  it 'treats a tamer object of the same name as the same name' do
+    tamer = Tamer.new({'name' => 'Ricky Bobby'})
+    another_tamer = Tamer.new({'name' => 'Ricky Bobby'})
+    expect(tamer).to eq another_tamer
+  end  
 end
