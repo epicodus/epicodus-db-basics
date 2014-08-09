@@ -25,4 +25,8 @@ class Animal < Database
   def add_kind(kind)
     results = DB.exec("UPDATE animals SET kind_id = #{kind.id} where id = #{self.id}")
   end
+
+  def add_trainer(trainer)
+    results = DB.exec("INSERT INTO lessons (trainer_id, animal_id, kind_id) VALUES (#{trainer.id}, #{self.id}, #{self.kind_id});")
+  end
 end
