@@ -22,5 +22,15 @@ describe Animal do
     animal = Animal.new({'name' => 'Leo'})
     another_animal = Animal.new({'name' => 'Leo'})
     expect(animal).to eq another_animal
-  end 
+  end
+
+  describe '.all' do
+    it 'creates animal objects from all animal entries in db' do
+      animal = Animal.new({'name' => 'Leo'})
+      another_animal = Animal.new({'name' => 'Leo'})
+      animal.save
+      another_animal.save
+      expect(Animal.all).to eq [animal, another_animal]
+    end  
+  end
 end
