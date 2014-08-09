@@ -73,25 +73,23 @@ describe Trainer do
     expect(Trainer.all).to eq [another_tamer]
   end
 
-  # describe 'list_kinds' do
-  #   it 'returns all kinds of animals trained by trainer' do
-  #     tamer = Trainer.new({'name' => 'Ricky Bobby'})
-  #     tamer.save
-  #     animal = Animal.new({'name' => 'Leo'})
-  #     animal.save
-  #     another_animal = Animal.new({'name' => 'Fozzie'})
-  #     another_animal.save
-  #     kind = Kind.new({'name' => 'lion'})
-  #     kind.save
-  #     another_kind = Kind.new({'name' => 'bear'})
-  #     another_kind.save
-  #     animal.add_kind(kind)
-  #     another_animal.add_kind(another_kind)
-  #     tamer.add_animal(animal)
-  #     tamer.add_animal(another_animal)
-  #     results = DB.exec("SELECT * FROM lessons")
-  #     results.each { |result| puts result  }
-  #     expect(tamer.list_kinds).to eq ['lion', 'bear']
-  #   end  
-  # end  
+  describe 'list_kinds' do
+    it 'returns all kinds of animals trained by trainer' do
+      tamer = Trainer.new({'name' => 'Ricky Bobby'})
+      tamer.save
+      animal = Animal.new({'name' => 'Leo'})
+      animal.save
+      another_animal = Animal.new({'name' => 'Fozzie'})
+      another_animal.save
+      kind = Kind.new({'name' => 'lion'})
+      kind.save
+      another_kind = Kind.new({'name' => 'bear'})
+      another_kind.save
+      animal.add_kind(kind)
+      another_animal.add_kind(another_kind)
+      tamer.add_animal(animal)
+      tamer.add_animal(another_animal)
+      expect(tamer.list_kinds).to eq ['lion', 'bear']
+    end  
+  end  
 end
