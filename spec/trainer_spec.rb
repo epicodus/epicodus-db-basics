@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'tamer'
+require 'trainer'
 
 describe Trainer do
   it 'is initialized by a name' do
