@@ -13,7 +13,11 @@ class Animal < Database
     @id = result.first['id']
   end
 
-  def ==(another_animal)
-    self.species == another_animal.species
-  end  
+  def ==(another_self)
+    self.species == another_self.species
+  end
+
+  def destroy
+    DB.exec("DELETE FROM animals WHERE id = '#{id}'")
+  end 
 end

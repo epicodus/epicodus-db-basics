@@ -13,7 +13,7 @@ class Tamer < Database
     @id = result.first['id']
   end
 
-  def ==(another_tamer)
-    self.name == another_tamer.name
+  def ==(another_self)
+    self.name == another_self.name
   end  
 end

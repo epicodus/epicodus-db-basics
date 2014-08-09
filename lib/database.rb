@@ -6,5 +6,4 @@ class Database
     results.each { |result| all << self.new(result) }
     all
   end
-
 end
