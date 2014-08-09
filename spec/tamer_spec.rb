@@ -33,4 +33,13 @@ describe Tamer do
       expect(Tamer.all).to eq [tamer, another_tamer]
     end  
   end
+
+  it 'deletes an tamer from the db' do
+    tamer = Tamer.new({'name' => 'Ricky Bobby'})
+    another_tamer = Tamer.new({'name' => "little Bobby"})
+    tamer.save
+    another_tamer.save
+    tamer.destroy
+    expect(Tamer.all).to eq [another_tamer]
+  end
 end

@@ -34,7 +34,7 @@ describe Animal do
     end  
   end
 
-  it 'deletes an author from the db' do
+  it 'deletes an animal from the db' do
     animal = Animal.new({'species' => 'lion'})
     another_animal = animal = Animal.new({'species' => 'tiger'})
     animal.save
