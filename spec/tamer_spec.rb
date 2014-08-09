@@ -12,7 +12,6 @@ describe Tamer do
     expect(tamer.name).to eq 'Billy'
   end
 
-
   it 'saves the new tamer object to the db' do
     tamer = Tamer.new({'name' => 'Billy'})
     tamer.save
@@ -23,5 +22,15 @@ describe Tamer do
     tamer = Tamer.new({'name' => 'Ricky Bobby'})
     another_tamer = Tamer.new({'name' => 'Ricky Bobby'})
     expect(tamer).to eq another_tamer
-  end  
+  end
+
+  describe '.all' do
+    it 'creates tamer objects from all tamer entries in db' do
+      tamer = Tamer.new({'name' => 'Ricky Bobby'})
+      another_tamer = Tamer.new({'name' => 'Ricky Bobby'})
+      tamer.save
+      another_tamer.save
+      expect(Tamer.all).to eq [tamer, another_tamer]
+    end  
+  end
 end

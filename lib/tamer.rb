@@ -16,5 +16,4 @@ class Tamer < Database
   def ==(another_tamer)
     self.name == another_tamer.name
   end  
-
 end
