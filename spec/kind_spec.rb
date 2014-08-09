@@ -24,6 +24,16 @@ describe Kind do
     expect(kind).to eq another_kind
   end
 
+  it 'adds a kind to an animal' do
+    kind = Kind.new({'name' => 'lion'})
+    kind.save
+    animal = Animal.new({'name' => 'Leo'})
+    animal.save
+    kind.add_animal(animal)
+    results = DB.exec("SELECT * FROM animals WHERE id = #{animal.id}")
+    expect(results.first['kind_id']).to eq kind.id
+  end
+
   describe '.all' do
     it 'creates kind objects from all kind entries in db' do
       kind = Kind.new({'name' => 'lion'})
