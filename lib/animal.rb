@@ -16,8 +16,4 @@ class Animal < Database
   def ==(another_self)
     self.species == another_self.species
   end
-
-  def destroy
-    DB.exec("DELETE FROM animals WHERE id = '#{id}'")
-  end 
 end

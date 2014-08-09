@@ -1,45 +1,45 @@
 require 'spec_helper'
 require 'tamer'
 
-describe Tamer do
+describe Trainer do
   it 'is initialized by a name' do
-    tamer = Tamer.new({'name' => 'Billy'})
-    expect(tamer).to be_an_instance_of Tamer
+    tamer = Trainer.new({'name' => 'Billy'})
+    expect(tamer).to be_an_instance_of Trainer
   end
 
   it 'allows manager to access Tamer name' do
-    tamer = Tamer.new({'name' => 'Billy'})
+    tamer = Trainer.new({'name' => 'Billy'})
     expect(tamer.name).to eq 'Billy'
   end
 
   it 'saves the new tamer object to the db' do
-    tamer = Tamer.new({'name' => 'Billy'})
+    tamer = Trainer.new({'name' => 'Billy'})
     tamer.save
-    expect(Tamer.all).to eq [tamer]
+    expect(Trainer.all).to eq [tamer]
   end
 
   it 'treats a tamer object of the same name as the same name' do
-    tamer = Tamer.new({'name' => 'Ricky Bobby'})
-    another_tamer = Tamer.new({'name' => 'Ricky Bobby'})
+    tamer = Trainer.new({'name' => 'Ricky Bobby'})
+    another_tamer = Trainer.new({'name' => 'Ricky Bobby'})
     expect(tamer).to eq another_tamer
   end
 
   describe '.all' do
     it 'creates tamer objects from all tamer entries in db' do
-      tamer = Tamer.new({'name' => 'Ricky Bobby'})
-      another_tamer = Tamer.new({'name' => 'Ricky Bobby'})
+      tamer = Trainer.new({'name' => 'Ricky Bobby'})
+      another_tamer = Trainer.new({'name' => 'Ricky Bobby'})
       tamer.save
       another_tamer.save
-      expect(Tamer.all).to eq [tamer, another_tamer]
+      expect(Trainer.all).to eq [tamer, another_tamer]
     end  
   end
 
   it 'deletes an tamer from the db' do
-    tamer = Tamer.new({'name' => 'Ricky Bobby'})
-    another_tamer = Tamer.new({'name' => "little Bobby"})
+    tamer = Trainer.new({'name' => 'Bobby'})
+    another_tamer = Trainer.new({'name' => "little Bobby"})
     tamer.save
     another_tamer.save
-    tamer.destroy
-    expect(Tamer.all).to eq [another_tamer]
+    Trainer.destroy(tamer)
+    expect(Trainer.all).to eq [another_tamer]
   end
 end

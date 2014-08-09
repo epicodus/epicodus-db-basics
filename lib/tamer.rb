@@ -1,4 +1,4 @@
-class Tamer < Database
+class Trainer < Database
 
   attr_accessor :name, :id
   @table = 'trainers'
@@ -16,8 +16,4 @@ class Tamer < Database
   def ==(another_self)
     self.name == another_self.name
   end
-
-  def destroy
-    DB.exec("DELETE FROM trainers WHERE id = '#{id}'")
-  end  
 end

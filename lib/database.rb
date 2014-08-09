@@ -6,4 +6,8 @@ class Database
     results.each { |result| all << self.new(result) }
     all
   end
+
+  def self.destroy(object)
+    DB.exec("DELETE FROM #{@table} WHERE id = '#{object.id}'")
+  end
 end

@@ -39,7 +39,7 @@ describe Animal do
     another_animal = animal = Animal.new({'species' => 'tiger'})
     animal.save
     another_animal.save
-    animal.destroy
+    Animal.destroy(animal)
     expect(Animal.all).to eq [another_animal]
   end
 end
