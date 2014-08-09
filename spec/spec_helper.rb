@@ -8,5 +8,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DB.exec("DELETE FROM kinds *;")
     DB.exec("DELETE FROM trainers *;")
+    DB.exec("DELETE FROM animals *;")
   end
 end

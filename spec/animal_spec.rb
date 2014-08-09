@@ -18,4 +18,9 @@ describe Animal do
     expect(Animal.all).to eq [animal]
   end
   
+  it 'treats an animal object of the same name as the same name' do
+    animal = Animal.new({'name' => 'Leo'})
+    another_animal = Animal.new({'name' => 'Leo'})
+    expect(animal).to eq another_animal
+  end 
 end

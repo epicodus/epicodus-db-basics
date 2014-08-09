@@ -12,4 +12,8 @@ class Animal < Database
     result = DB.exec("INSERT INTO animals (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first['id']
   end
+
+  def ==(another_self)
+    self.name == another_self.name
+  end
 end
