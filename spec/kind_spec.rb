@@ -22,7 +22,7 @@ describe Kind do
     kind = Kind.new({'name' => 'lion'})
     another_kind = Kind.new({'name' => 'lion'})
     expect(kind).to eq another_kind
-  end  
+  end
 
   describe '.all' do
     it 'creates kind objects from all kind entries in db' do

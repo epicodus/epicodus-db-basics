@@ -16,4 +16,8 @@ class Animal < Database
   def ==(another_self)
     self.name == another_self.name
   end
+
+  def add_kind(kind)
+    results = DB.exec("UPDATE animals SET kind_id = #{kind.id} where id = #{self.id}")
+  end
 end
