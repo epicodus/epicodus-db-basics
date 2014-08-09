@@ -34,6 +34,18 @@ describe Kind do
     expect(results.first['kind_id']).to eq kind.id
   end
 
+  it 'lists all animals for a kind' do
+    animal = Animal.new({'name' => 'Leo'})
+    animal.save
+    another_animal = Animal.new({'name' => 'Lizzie'})
+    another_animal.save
+    kind = Kind.new({'name' => 'lion'})
+    kind.save
+    kind.add_animal(animal)
+    kind.add_animal(another_animal)
+    expect(kind.list_animals).to eq ['Leo','Lizzie']
+  end
+
   describe '.all' do
     it 'creates kind objects from all kind entries in db' do
       kind = Kind.new({'name' => 'lion'})

@@ -20,4 +20,11 @@ class Kind < Database
   def add_animal(animal)
     results = DB.exec("UPDATE animals SET kind_id = #{self.id} where id = #{animal.id}")
   end
+
+  def list_animals
+    all_animals = []
+    results = DB.exec("SELECT * FROM animals WHERE kind_id = #{self.id}")
+    results.each { |result| all_animals << result['name'] }
+    all_animals
+  end
 end
