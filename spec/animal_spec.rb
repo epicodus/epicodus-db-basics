@@ -33,4 +33,15 @@ describe Animal do
       expect(Animal.all).to eq [animal, another_animal]
     end  
   end
+
+  describe '.destroy' do
+    it 'deletes an animal from the db' do
+      animal = Animal.new({'name' => 'Leo'})
+      another_animal = Animal.new({'name' => 'Leo'})
+      animal.save
+      another_animal.save
+      Animal.destroy(animal)
+      expect(Animal.all).to eq [another_animal]
+    end
+  end  
 end
