@@ -30,4 +30,14 @@ class Trainer < Database
     results.each { |result| all_kinds << result['name'] }
     all_kinds
   end
+
+  def list_animals
+    all_animals = []
+    results = DB.exec("SELECT animals.* FROM
+                      trainers JOIN lessons ON (trainers.id = lessons.trainer_id)
+                               JOIN animals ON (lessons.animal_id = animals.id)
+                      where trainers.id = #{self.id};")
+    results.each { |result| all_animals << result['name'] }
+    all_animals
+  end
 end
