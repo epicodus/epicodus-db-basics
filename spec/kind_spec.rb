@@ -7,7 +7,7 @@ describe Kind do
     expect(kind).to be_an_instance_of Kind
   end
 
-  it 'allows manager to access animal name' do
+  it 'allows manager to access kind name' do
     kind = Kind.new({'name' => 'lion'})
     expect(kind.name).to eq 'lion'
   end
