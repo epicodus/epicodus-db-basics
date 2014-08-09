@@ -37,6 +37,23 @@ describe Trainer do
     expect(results.first['kind_id']).to eq kind.id.to_s
   end
 
+  it 'adds multiple animals of the same kind' do
+    tamer = Trainer.new({'name' => 'Ricky Bobby'})
+    tamer.save
+    animal = Animal.new({'name' => 'Leo'})
+    animal.save
+    kind = Kind.new({'name' => 'lion'})
+    kind.save
+    another_animal = Animal.new({'name' => 'Lizzie'})
+    another_animal.save
+    animal.add_kind(kind)
+    another_animal.add_kind(kind)
+    tamer.add_animal(animal)
+    tamer.add_animal(another_animal)
+    results = DB.exec("SELECT * FROM lessons WHERE trainer_id = #{tamer.id}")
+    expect(results[0]['kind_id']).to eq results[1]['kind_id']
+  end
+
   describe '.all' do
     it 'creates tamer objects from all tamer entries in db' do
       tamer = Trainer.new({'name' => 'Ricky Bobby'})
@@ -55,4 +72,26 @@ describe Trainer do
     Trainer.destroy(tamer)
     expect(Trainer.all).to eq [another_tamer]
   end
+
+  # describe 'list_kinds' do
+  #   it 'returns all kinds of animals trained by trainer' do
+  #     tamer = Trainer.new({'name' => 'Ricky Bobby'})
+  #     tamer.save
+  #     animal = Animal.new({'name' => 'Leo'})
+  #     animal.save
+  #     another_animal = Animal.new({'name' => 'Fozzie'})
+  #     another_animal.save
+  #     kind = Kind.new({'name' => 'lion'})
+  #     kind.save
+  #     another_kind = Kind.new({'name' => 'bear'})
+  #     another_kind.save
+  #     animal.add_kind(kind)
+  #     another_animal.add_kind(another_kind)
+  #     tamer.add_animal(animal)
+  #     tamer.add_animal(another_animal)
+  #     results = DB.exec("SELECT * FROM lessons")
+  #     results.each { |result| puts result  }
+  #     expect(tamer.list_kinds).to eq ['lion', 'bear']
+  #   end  
+  # end  
 end
