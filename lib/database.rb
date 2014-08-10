@@ -10,4 +10,8 @@ class Database
   def self.destroy(object)
     DB.exec("DELETE FROM #{@table} WHERE id = '#{object.id}'")
   end
+
+  def self.find_by_name(name)
+    self.all.find { |object| name == object.name } 
+  end 
 end

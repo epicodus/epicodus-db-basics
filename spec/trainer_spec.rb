@@ -114,4 +114,14 @@ describe Trainer do
       expect(Trainer.all).to eq [another_tamer]
     end
   end
+
+  describe '.find_by_name' do
+    it 'finds the trainer object by trainer name' do
+      tamer = Trainer.new({'name' => 'Bobby'})
+      another_tamer = Trainer.new({'name' => "little Bobby"})
+      tamer.save
+      another_tamer.save
+      expect(Trainer.find_by_name('little Bobby')).to eq another_tamer
+    end
+  end  
 end

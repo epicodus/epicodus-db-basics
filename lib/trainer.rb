@@ -39,5 +39,5 @@ class Trainer < Database
                       where trainers.id = #{self.id};")
     results.each { |result| all_animals << result['name'] }
     all_animals
-  end
+  end 
 end
