@@ -11,7 +11,7 @@ Are you a manager of professional lion tamers and need a means to manage your ta
 ### SET-UP
 The structure of the database contains a one to many relationship so that a kind (or species) can have many animals. A many to many relationship also exists so that trainers can have many animals and vice-versa. Follow these guidelines to create the database and tables in postgresql:
 
-* CREATE DATABASE trainer_organizer;*
+* CREATE DATABASE trainer_organizer;
 * CREATE TABLE animals (id serial PRIMARY KEY, name varchar);
 * CREATE TABLE trainers (id serial PRIMARY KEY, name varchar);
 * CREATE TABLE kinds (id serial PRIMARY KEY, name varchar);
