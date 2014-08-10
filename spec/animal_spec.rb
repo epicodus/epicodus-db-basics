@@ -32,7 +32,7 @@ describe Animal do
     animal.add_kind(kind)
     results = DB.exec("SELECT * FROM animals WHERE id = #{animal.id}")
     expect(results.first['kind_id']).to eq kind.id
-  end 
+  end
 
   it 'provides access to kind_id after kind added to animal' do
     animal = Animal.new({'name' => 'Leo'})
@@ -55,7 +55,7 @@ describe Animal do
     animal.add_trainer(tamer)
     results = DB.exec("SELECT * FROM lessons WHERE trainer_id = #{tamer.id}")
     expect(results.first['kind_id']).to eq kind.id
-  end 
+  end
 
   describe '.all' do
     it 'creates animal objects from all animal entries in db' do
@@ -64,7 +64,7 @@ describe Animal do
       animal.save
       another_animal.save
       expect(Animal.all).to eq [animal, another_animal]
-    end  
+    end
   end
 
   describe '.destroy' do
@@ -86,5 +86,5 @@ describe Animal do
       another_animal.save
       expect(Animal.find_by_name('Lizzie')).to eq another_animal
     end
-  end  
+  end
 end

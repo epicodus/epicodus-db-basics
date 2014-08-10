@@ -11,7 +11,7 @@ class Animal < Database
   def kind_id
     result = DB.exec("SELECT * FROM animals WHERE id = #{self.id}")
     result.first['kind_id']
-  end  
+  end
 
   def save
     result = DB.exec("INSERT INTO animals (name) VALUES ('#{@name}') RETURNING id;")

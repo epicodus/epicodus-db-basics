@@ -5,7 +5,7 @@ require './lib/animal'
 require './lib/kind'
 require './lib/trainer'
 
-DB = PG.connect({:dbname => 'le_dompteur'})
+DB = PG.connect({:dbname => 'trainer_organizer'})
 
 def main_menu
   loop do
@@ -17,7 +17,7 @@ def main_menu
     puts "Select 5 to list all trainers"
     puts "Select 6 to list all all species trained by a trainer"
     puts "Select 7 to list all all animals trained by a trainer"
-    puts "Select 8 to list all animals of given species for a trainer"
+    puts "Select 8 to list all animals of given species"
     puts "Select * to exit"
     puts "\n"
     print ">"
@@ -30,6 +30,7 @@ def main_menu
       when '5' then list_all_trainers
       when '6' then list_all_species_by_trainer
       when '7' then list_all_animals_by_trainer
+      when '8' then list_all_animals_of_given_species
       when '*' then exit
     end
   end
@@ -97,6 +98,16 @@ def list_all_animals_by_trainer
   trainer = Trainer.find_by_name(trainer_name)
   puts "All animals trained by #{trainer.name}:\n"
   puts trainer.list_animals
+  puts "\n"
+end
+
+def list_all_animals_of_given_species
+  puts "Select a species:\n"
+  Kind.all.each { |sp| puts sp.name }
+  print ">"; kind_name = gets.chomp
+  kind = Kind.find_by_name(kind_name)
+  puts "All animals for #{kind.name}:\n"
+  puts kind.list_animals
   puts "\n"
 end
 

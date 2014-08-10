@@ -53,7 +53,7 @@ describe Kind do
       kind.save
       another_kind.save
       expect(Kind.all).to eq [kind, another_kind]
-    end  
+    end
   end
 
    describe '.destroy' do
@@ -75,5 +75,5 @@ describe Kind do
       another_kind.save
       expect(Kind.find_by_name('lion')).to eq kind
     end
-  end  
+  end
 end

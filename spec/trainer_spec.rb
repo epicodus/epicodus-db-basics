@@ -101,7 +101,7 @@ describe Trainer do
       tamer.save
       another_tamer.save
       expect(Trainer.all).to eq [tamer, another_tamer]
-    end  
+    end
   end
 
   describe '.destroy' do
@@ -123,5 +123,5 @@ describe Trainer do
       another_tamer.save
       expect(Trainer.find_by_name('little Bobby')).to eq another_tamer
     end
-  end  
+  end
 end

@@ -12,6 +12,6 @@ class Database
   end
 
   def self.find_by_name(name)
-    self.all.find { |object| name == object.name } 
-  end 
+    self.all.find { |object| name == object.name }
+  end
 end
