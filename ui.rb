@@ -5,7 +5,7 @@ require './lib/animal'
 require './lib/kind'
 require './lib/trainer'
 
-DB = PG.connect({:dbname => 'le_domteur'})
+DB = PG.connect({:dbname => 'le_dompteur'})
 
 def main_menu
   loop do
@@ -19,20 +19,20 @@ def main_menu
     puts "Select 7 to list all all animals trained by a trainer"
     puts "Select 8 to list all animals of a species for a trainer"
     puts "Select * to exit"
-  end
-  puts "\n"
+    puts "\n"
     print ">"
     user_input = gets.chomp
     case user_input
-      when '1' then 
-      when '2' then 
-      when '3' then 
-      when '4' then 
-      when '5' then 
-      when '6' then
-      when '7' then
-      when '8' then
+      when '1' then add_trainer
       when '*' then exit
     end
   end
-end    
+end
+
+def add_trainer
+  print "New trainer: "; new_trainer = gets.chomp
+  Trainer.new(new_trainer).save
+  puts "*#{new_trainer}* added as a trainer\n"
+end
+
+main_menu
