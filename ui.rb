@@ -28,6 +28,7 @@ def main_menu
       when '3' then add_animal_to_species
       when '4' then add_animal_to_trainer
       when '5' then list_all_trainers
+      when '6' then list_all_species_by_trainer
       when '*' then exit
     end
   end
@@ -74,8 +75,17 @@ def add_animal_to_trainer
 end
 
 def list_all_trainers
-  puts "All Trainers:\n"
   Trainer.all.each { |trainer| puts trainer.name }
+  puts "\n"
+end
+
+def list_all_species_by_trainer
+  list_all_trainers
+  puts "Select a trainer to view all species:\n"
+  print ">"; trainer_name = gets.chomp
+  trainer = Trainer.find_by_name(trainer_name)
+  puts "All species trained by #{trainer.name}:\n"
+  puts trainer.list_kinds
   puts "\n"
 end
 
