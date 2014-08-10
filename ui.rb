@@ -27,6 +27,7 @@ def main_menu
       when '2' then add_species
       when '3' then add_animal_to_species
       when '4' then add_animal_to_trainer
+      when '5' then list_all_trainers
       when '*' then exit
     end
   end
@@ -70,6 +71,12 @@ def add_animal_to_trainer
   animal_to_add = Animal.find_by_name(animal_name)
   trainer.add_animal(animal_to_add)
   puts "#{animal_to_add.name} has been added to #{trainer.name}.\n"
+end
+
+def list_all_trainers
+  puts "All Trainers:\n"
+  Trainer.all.each { |trainer| puts trainer.name }
+  puts "\n"
 end
 
 
