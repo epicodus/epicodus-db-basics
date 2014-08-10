@@ -34,7 +34,7 @@ describe Trainer do
     animal.add_kind(kind)
     tamer.add_animal(animal)
     results = DB.exec("SELECT * FROM lessons WHERE trainer_id = #{tamer.id}")
-    expect(results.first['kind_id']).to eq kind.id.to_s
+    expect(results.first['kind_id']).to eq kind.id
   end
 
   it 'adds multiple animals of the same kind' do
@@ -65,7 +65,7 @@ describe Trainer do
   end
 
   describe '.put_down' do
-    it 'deletes an tamer from the db' do
+    it 'deletes a tamer from the db' do
       tamer = Trainer.new({'name' => 'Bobby'})
       another_tamer = Trainer.new({'name' => "little Bobby"})
       tamer.save

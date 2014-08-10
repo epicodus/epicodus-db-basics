@@ -41,7 +41,6 @@ describe Animal do
     kind.save
     animal.add_kind(kind)
     results = DB.exec("SELECT * FROM animals WHERE id = #{animal.id}")
-    results.each do |result| puts result end
     expect(results.first['kind_id']).to eq animal.kind_id
   end
 
@@ -55,7 +54,7 @@ describe Animal do
     kind.add_animal(animal)
     animal.add_trainer(tamer)
     results = DB.exec("SELECT * FROM lessons WHERE trainer_id = #{tamer.id}")
-    expect(results.first['kind_id']).to eq kind.id.to_s
+    expect(results.first['kind_id']).to eq kind.id
   end 
 
   describe '.all' do
