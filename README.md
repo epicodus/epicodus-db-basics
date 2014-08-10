@@ -16,7 +16,7 @@ The structure of the database contains a one to many relationship so that a kind
 * CREATE TABLE trainers (id serial PRIMARY KEY, name varchar);
 * CREATE TABLE kinds (id serial PRIMARY KEY, name varchar);
 * CREATE TABLE lessons (id serial PRIMARY KEY, trainer_id int, animal_id int, kind_id int);
-* CREATE TABLE trainer_organizer_test WITH TEMPLATE trainer_organizer;
+* CREATE DATABASE trainer_organizer_test WITH TEMPLATE trainer_organizer;
 
 ### Author
 Jeff Stringer Copyright :copyright: 2014
