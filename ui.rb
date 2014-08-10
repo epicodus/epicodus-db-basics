@@ -67,9 +67,9 @@ def add_animal_to_trainer
   Animal.all.each { |animal| puts animal.name }
   print "\nEnter animal name to be added: ";  
   animal_name = gets.chomp
-  new_animal = Animal.find_by_name(animal_name)
-  trainer.add_animal(new_animal)
-  puts "#{new_animal.name} has been added to #{trainer.name}."
+  animal_to_add = Animal.find_by_name(animal_name)
+  trainer.add_animal(animal_to_add)
+  puts "#{animal_to_add.name} has been added to #{trainer.name}.\n"
 end
 
 
