@@ -76,5 +76,15 @@ describe Animal do
       Animal.destroy(animal)
       expect(Animal.all).to eq [another_animal]
     end
+  end
+
+  describe '.find_by_name' do
+    it 'finds the trainer object by trainer name' do
+      animal = Animal.new({'name' => 'Leo'})
+      another_animal = Animal.new({'name' => 'Lizzie'})
+      animal.save
+      another_animal.save
+      expect(Animal.find_by_name('Lizzie')).to eq another_animal
+    end
   end  
 end
