@@ -67,13 +67,13 @@ describe Animal do
     end  
   end
 
-  describe '.put_down' do
+  describe '.destroy' do
     it 'deletes an animal from the db' do
       animal = Animal.new({'name' => 'Leo'})
       another_animal = Animal.new({'name' => 'Leo'})
       animal.save
       another_animal.save
-      Animal.put_down(animal)
+      Animal.destroy(animal)
       expect(Animal.all).to eq [another_animal]
     end
   end  

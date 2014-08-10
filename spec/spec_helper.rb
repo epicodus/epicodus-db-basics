@@ -1,5 +1,6 @@
 require 'rspec'
 require 'pg'
+
 require 'database'
 
 DB = PG.connect({:dbname => 'le_dompteur_test'})

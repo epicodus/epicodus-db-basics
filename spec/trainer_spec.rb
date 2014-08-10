@@ -54,27 +54,6 @@ describe Trainer do
     expect(results[0]['kind_id']).to eq results[1]['kind_id']
   end
 
-  describe '.all' do
-    it 'creates tamer objects from all tamer entries in db' do
-      tamer = Trainer.new({'name' => 'Ricky Bobby'})
-      another_tamer = Trainer.new({'name' => 'Ricky Bobby'})
-      tamer.save
-      another_tamer.save
-      expect(Trainer.all).to eq [tamer, another_tamer]
-    end  
-  end
-
-  describe '.put_down' do
-    it 'deletes a tamer from the db' do
-      tamer = Trainer.new({'name' => 'Bobby'})
-      another_tamer = Trainer.new({'name' => "little Bobby"})
-      tamer.save
-      another_tamer.save
-      Trainer.put_down(tamer)
-      expect(Trainer.all).to eq [another_tamer]
-    end
-  end  
-
   describe 'list_kinds' do
     it 'returns all kinds of animals trained by trainer' do
       tamer = Trainer.new({'name' => 'Ricky Bobby'})
@@ -112,6 +91,27 @@ describe Trainer do
       tamer.add_animal(animal)
       tamer.add_animal(another_animal)
       expect(tamer.list_animals).to eq ['Leo', 'Fozzie']
+    end
+  end
+
+  describe '.all' do
+    it 'creates tamer objects from all tamer entries in db' do
+      tamer = Trainer.new({'name' => 'Ricky Bobby'})
+      another_tamer = Trainer.new({'name' => 'Ricky Bobby'})
+      tamer.save
+      another_tamer.save
+      expect(Trainer.all).to eq [tamer, another_tamer]
+    end  
+  end
+
+  describe '.destroy' do
+    it 'deletes a tamer from the db' do
+      tamer = Trainer.new({'name' => 'Bobby'})
+      another_tamer = Trainer.new({'name' => "little Bobby"})
+      tamer.save
+      another_tamer.save
+      Trainer.destroy(tamer)
+      expect(Trainer.all).to eq [another_tamer]
     end
   end
 end
