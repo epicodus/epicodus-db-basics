@@ -25,7 +25,8 @@ def main_menu
     case user_input
       when '1' then add_trainer
       when '2' then add_species
-      when '3' then add_animal
+      when '3' then add_animal_to_species
+      when '4' then add_animal_to_trainer
       when '*' then exit
     end
   end
@@ -33,20 +34,42 @@ end
 
 def add_trainer
   print "New trainer: "; new_trainer = gets.chomp
-  Trainer.new(new_trainer).save
+  Trainer.new({'name' => new_trainer}).save
   puts "*#{new_trainer}* has been added.\n\n"
 end
 
 def add_species
   print "New species: "; new_species = gets.chomp
-  Kind.new(new_species).save
+  Kind.new({'name' => new_species}).save
   puts "*#{new_species}* has been added.\n\n"
 end
 
-def add_animal
-  print "New animal: "; new_animal = gets.chomp
-  Animal.new(new_animal).save
-  puts "*#{new_animal}* has been added.\n\n"
+def add_animal_to_species
+  puts "Select a species:\n"
+  Kind.all.each { |sp| puts sp.name }
+  print ">"
+  kind_name = gets.chomp
+  kind = Kind.find_by_name(kind_name)
+  print "New animal to add to #{kind_name} species: "; animal_name = gets.chomp
+  new_animal = Animal.new({'name' => animal_name})
+  new_animal.save
+  kind.add_animal(new_animal)
+  puts "*#{new_animal.name}* has been added to #{kind.name} species.\n\n"
+end
+
+def add_animal_to_trainer
+  puts "Select a trainer:\n"
+  Trainer.all.each { |trainer| puts trainer.name }
+  print ">"
+  trainer_name = gets.chomp
+  trainer = Trainer.find_by_name(trainer_name)
+  puts "Select a animal:\n"
+  Animal.all.each { |animal| puts animal.name }
+  print "\nEnter animal name to be added: ";  
+  animal_name = gets.chomp
+  new_animal = Animal.find_by_name(animal_name)
+  trainer.add_animal(new_animal)
+  puts "#{new_animal.name} has been added to #{trainer.name}."
 end
 
 
