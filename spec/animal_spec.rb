@@ -79,7 +79,7 @@ describe Animal do
   end
 
   describe '.find_by_name' do
-    it 'finds the trainer object by trainer name' do
+    it 'finds the animal object by animal name' do
       animal = Animal.new({'name' => 'Leo'})
       another_animal = Animal.new({'name' => 'Lizzie'})
       animal.save

@@ -65,5 +65,15 @@ describe Kind do
       Kind.destroy(kind)
       expect(Kind.all).to eq [another_kind]
     end
+  end
+
+  describe '.find_by_name' do
+    it 'finds the kind object by kind name' do
+      kind = Kind.new({'name' => 'lion'})
+      another_kind = Kind.new({'name' => 'tiger'})
+      kind.save
+      another_kind.save
+      expect(Kind.find_by_name('lion')).to eq kind
+    end
   end  
 end
